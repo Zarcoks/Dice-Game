@@ -16,19 +16,30 @@ int main() {
     getline(cin, unusefull_variable);
 
     cout << "Fine, lets do this !" << endl;
-    cout << "Roll the dices please." << endl;
-    cout << "--> ";
-    getline(cin, unusefull_variable);
+    bool retry(true);
 
-    int player_score = rand()%12 + 1;
-    int IA_score = rand()%12 + 1;
+    while(retry){ 
+        cout << "Roll the dices please." << endl;
+        cout << "--> ";
+        getline(cin, unusefull_variable);
 
-    cout << "Your score is " << player_score << endl;
-    cout << "And IA score is " << IA_score << endl;
+        int player_score = rand()%12 + 1;
+        int IA_score = rand()%12 + 1;
 
-    if (player_score > IA_score) { cout << "You won !"; }
-    else if (player_score < IA_score) { cout << "You lose !"; }
-    else { cout << "It's draw !"; }
+        cout << "Your score is " << player_score << endl;
+        cout << "And IA score is " << IA_score << endl;
 
+        if (player_score > IA_score) { cout << "You won !" << endl; }
+        else if (player_score < IA_score) { cout << "You lose !" << endl; }
+        else { cout << "It's draw !" << endl; }
 
+        cout << "Retry? (Y/n) --> ";
+        string resp;
+        getline(cin, resp);
+
+        while(!(resp == "Y" || resp == "n")){
+            cout << "That's not a good answer, please retry --> "; getline(cin, resp);
+        }
+        if(resp=="n"){retry=false;}
+    }
 }
